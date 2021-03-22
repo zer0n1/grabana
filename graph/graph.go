@@ -3,6 +3,7 @@ package graph
 import (
 	"github.com/K-Phoen/grabana/alert"
 	"github.com/K-Phoen/grabana/axis"
+	"github.com/K-Phoen/grabana/graph/series"
 	"github.com/K-Phoen/grabana/target/prometheus"
 	"github.com/K-Phoen/grabana/target/stackdriver"
 	"github.com/grafana-tools/sdk"
@@ -251,6 +252,20 @@ func PointRadius(value float32) Option {
 func Null(mode NullValue) Option {
 	return func(graph *Graph) {
 		graph.Builder.GraphPanel.NullPointMode = string(mode)
+	}
+}
+
+// SeriesOverride configures how null values are displayed.
+// See https://grafana.com/docs/grafana/latest/panels/field-options/
+func SeriesOverride(opts ...series.OverrideOption) Option {
+	return func(graph *Graph) {
+		override := sdk.SeriesOverride{}
+
+		for _, opt := range opts {
+			opt(&override)
+		}
+
+		graph.Builder.GraphPanel.SeriesOverrides = append(graph.Builder.GraphPanel.SeriesOverrides, override)
 	}
 }
 

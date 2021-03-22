@@ -465,7 +465,7 @@ variables:
 				"query": "10m,12h,1h,1m,30m,30s,5m,6h",
 				"regex": "",
 				"current": {
-					"text": "30s",
+					"text": ["30s"],
 					"value": "30s"
 				},
 				"label": "Interval",
@@ -492,7 +492,7 @@ variables:
 				"query": "label_values(prometheus_http_requests_total, code)",
 				"regex": "",
 				"current": {
-					"text": "All",
+					"text": ["All"],
 					"value": "$__all"
 				},
 				"label": "HTTP status",
@@ -519,7 +519,7 @@ variables:
 				"query": "50",
 				"regex": "",
 				"current": {
-					"text": "50th",
+					"text": ["50th"],
 					"value": "50"
 				},
 				"label": "Percentile",
@@ -546,7 +546,7 @@ variables:
 				"query": "v1",
 				"regex": "",
 				"current": {
-					"text": "v1",
+					"text": ["v1"],
 					"value": "v1"
 				},
 				"label": "vX",
